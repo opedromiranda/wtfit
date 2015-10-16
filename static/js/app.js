@@ -1,5 +1,5 @@
 var React = require('react');
-var MovementLight = require('./components/MovementLight.react');;
+var MovementLight = require('./components/MovementLight.react');
 
 window.React = React;
 

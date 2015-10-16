@@ -18,13 +18,6 @@ function _updateMovement(movement) {
     .set('date', movement.date)
 }
 
-setInterval(function () {
-  var detected = !_movement.get('detected');
-  _movement = _movement.set('detected', detected);
-  console.log('toggled');
-  MovementStore.emitChange();
-}, 2500);
-
 var MovementStore = assign({}, EventEmitter.prototype, {
   emitChange: function () {
     this.emit(CHANGE_EVENT)
