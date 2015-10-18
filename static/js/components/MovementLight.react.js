@@ -2,6 +2,8 @@ var React = require('react');
 var ImmutablePropTypes = require('react-immutable-proptypes');
 var MovementStore = require('../store/MovementStore');
 var assign = require('object-assign');
+var baseStyles = require('./styles/MovementLight.styles.js');
+var classnames = require('classnames');
 
 function getStateFromStore() {
   return {
@@ -24,44 +26,21 @@ var MovementLight = React.createClass({
   },
 
   render: function () {
+    var classes = classnames('wtf-ml');
     var movement = this.state.movement;
-    var result;
-    var message;
-    var baseSensorStyle = {
-      width: '50px',
-      height: '50px',
-      MozBorderRadius: '50px',
-	    WebkitBorderRadius: '50px',
-	    borderRadius: '50px',
-      backgroundColor: 'black',
-      WebKitTransition: 'background-color 1000ms linear',
-      MozTransition: 'background-color 1000ms linear',
-      transition: 'background-color 1000ms linear',
-    };
-    var activeSensorStyle = {
-      backgroundColor: 'green',
-    };
+    var styles = assign({}, baseStyles);
 
     if (movement.get('detected')) {
-      activeSensorStyle = assign(baseSensorStyle, activeSensorStyle);
-
-      message = (
-        <p>Movement detected</p>
-      );
-    } else {
-      message = (
-        <p>Movement not detected</p>
-      );
+      assign(styles, {
+        backgroundColor: 'green',
+      });
     }
 
-    result = (
-      <div>
-        {message}
-        <div style={baseSensorStyle}></div>
+    return (
+      <div className={classes}>
+        <div style={styles}></div>
       </div>
     );
-
-    return result;
   },
 
   _onChange: function () {

@@ -17,6 +17,7 @@
   "author": "Pedro Miranda",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.0",
     "debug": "^2.2.0",
     "express": "^4.13.3",
     "flux": "^2.1.1",
@@ -43,6 +44,6 @@
     ]
   },
   "jest": {
-    "rootDir": "./js"
+    "rootDir": "./static/js"
   }
 }
